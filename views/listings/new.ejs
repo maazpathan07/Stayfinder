@@ -1,0 +1,105 @@
+<% layout ("/layouts/boilerplate.ejs") %>
+<section class="listing-form-page">
+    <header class="listing-form-page__heading">
+        <p class="page-eyebrow">Share a special place</p>
+        <h1 class="page-title">Create your listing</h1>
+        <p class="page-description">Tell travelers what makes your place worth the trip. A few thoughtful details go a long way.</p>
+    </header>
+
+    <div class="listing-form-layout">
+        <section class="form-card" aria-labelledby="listing-form-title">
+            <h2 class="form-card__section-title" id="listing-form-title">Stay details</h2>
+            <form class="listing-form" action="/listings" method="POST">
+                <div class="form-field">
+                    <label for="title">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 5h16M4 12h16M4 19h10"/>
+                        </svg>
+                        Listing title
+                    </label>
+                    <input type="text" id="title" name="listing[title]" placeholder="e.g. A quiet cabin by the lake" maxlength="100" required>
+                    <p class="form-field__hint">Choose a clear, welcoming name for your stay.</p>
+                </div>
+
+                <div class="form-field">
+                    <label for="description">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>
+                        </svg>
+                        Description
+                    </label>
+                    <textarea id="description" name="listing[description]" placeholder="What will guests love about staying here?" maxlength="2000" required></textarea>
+                    <p class="form-field__hint">Mention the highlights, atmosphere, and what guests can enjoy nearby.</p>
+                </div>
+
+                <div class="form-field">
+                    <label for="image">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/>
+                        </svg>
+                        Photo URL <span class="form-field__hint">(optional)</span>
+                    </label>
+                    <input type="url" id="image" name="listing[image]" placeholder="https://example.com/your-photo.jpg">
+                    <p class="form-field__hint">Add a direct link to a photo. Leave blank to use the default image.</p>
+                </div>
+
+                <div class="form-field--row">
+                    <div class="form-field">
+                        <label for="price">
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2v20m5-16H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            </svg>
+                            Price per night (INR)
+                        </label>
+                        <input type="number" id="price" name="listing[price]" placeholder="1500" min="0" step="1" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="location">
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>
+                            </svg>
+                            City or location
+                        </label>
+                        <input type="text" id="location" name="listing[location]" placeholder="e.g. Jaipur" maxlength="100" required>
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label for="country">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/>
+                        </svg>
+                        Country
+                    </label>
+                    <input type="text" id="country" name="listing[country]" placeholder="e.g. India" maxlength="100" required>
+                </div>
+
+                <div class="form-actions">
+                    <button class="button" type="submit">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                        Publish listing
+                    </button>
+                    <a class="button button--secondary" href="/listings">Cancel</a>
+                </div>
+            </form>
+        </section>
+
+        <aside class="form-tip-card">
+            <span class="form-tip-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 18h6m-5 4h4m-2-20a7 7 0 0 0-4 12.75c.7.5 1 1.05 1 1.75h6c0-.7.3-1.25 1-1.75A7 7 0 0 0 12 2Z"/>
+                </svg>
+            </span>
+            <h2>Make your stay stand out</h2>
+            <p>Help guests picture their trip before they book.</p>
+            <ul>
+                <li>Write a warm, specific description.</li>
+                <li>Use a bright photo that shows the space.</li>
+                <li>Double-check your location and nightly price.</li>
+            </ul>
+        </aside>
+    </div>
+</section>

@@ -1,0 +1,30 @@
+{
+  "name": "stayfinder",
+  "version": "1.0.0",
+  "description": "A travel stay listing app built with Express, EJS, and MongoDB.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node src/seed/index.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "travel",
+    "stayfinder",
+    "express",
+    "ejs",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "ejs": "^7.0.2",
+    "ejs-mate": "^4.0.0",
+    "express": "^5.3.0",
+    "method": "^2.0.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^9.11.4",
+    "override": "^0.0.1"
+  }
+}

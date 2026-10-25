@@ -1,0 +1,53 @@
+<% layout ("/layouts/boilerplate.ejs") %>
+<section class="listings-page">
+    <header class="listings-page__header">
+        <div>
+            <p class="page-eyebrow">Thoughtful stays, memorable trips</p>
+            <h1 class="page-title">Find your next getaway</h1>
+            <p class="page-description">Explore places to stay and make your next trip feel a little more special.</p>
+        </div>
+        <a class="button" href="/listings/new">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M5 12h14"/>
+            </svg>
+            Add a stay
+        </a>
+    </header>
+
+    <% if (allListings.length === 0) { %>
+        <div class="listings-empty">
+            <p class="page-eyebrow">A fresh start</p>
+            <h2>No stays listed yet</h2>
+            <p>Be the first to share a welcoming place with travelers.</p>
+            <a class="button" href="/listings/new">Create the first listing</a>
+        </div>
+    <% } else { %>
+        <ul class="listing-grid" aria-label="Available stays">
+            <% for (let listing of allListings) { %>
+                <li>
+                    <a class="listing-card" href="/listings/<%= listing._id %>">
+                        <img
+                            class="listing-card__image"
+                            src="<%= listing.image %>"
+                            alt="<%= listing.title %>"
+                            loading="lazy"
+                        >
+                        <div class="listing-card__content">
+                            <h2><%= listing.title %></h2>
+                            <p class="listing-card__location">
+                                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>
+                                </svg>
+                                <%= listing.location %><% if (listing.country) { %>, <%= listing.country %><% } %>
+                            </p>
+                            <p class="listing-card__price">
+                                <strong>&#8377; <%= listing.price.toLocaleString('en-IN') %></strong>
+                                <span> / night</span>
+                            </p>
+                        </div>
+                    </a>
+                </li>
+            <% } %>
+        </ul>
+    <% } %>
+</section>

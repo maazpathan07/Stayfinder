@@ -1,0 +1,103 @@
+<% layout ("/layouts/boilerplate.ejs") %>
+<section class="listing-form-page">
+    <header class="listing-form-page__heading">
+        <p class="page-eyebrow">Keep your stay up to date</p>
+        <h1 class="page-title">Edit your listing</h1>
+        <p class="page-description">Make changes to the details guests see before choosing your place.</p>
+    </header>
+
+    <div class="listing-form-layout">
+        <section class="form-card" aria-labelledby="listing-form-title">
+            <h2 class="form-card__section-title" id="listing-form-title">Stay details</h2>
+            <form class="listing-form" action="/listings/<%= listing._id %>?_method=PUT" method="POST">
+                <div class="form-field">
+                    <label for="title">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 5h16M4 12h16M4 19h10"/>
+                        </svg>
+                        Listing title
+                    </label>
+                    <input type="text" id="title" name="listing[title]" value="<%= listing.title %>" maxlength="100" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="description">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>
+                        </svg>
+                        Description
+                    </label>
+                    <textarea id="description" name="listing[description]" maxlength="2000" required><%= listing.description %></textarea>
+                </div>
+
+                <div class="form-field">
+                    <label for="image">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/>
+                        </svg>
+                        Photo URL
+                    </label>
+                    <input type="url" id="image" name="listing[image]" value="<%= listing.image %>" placeholder="https://example.com/your-photo.jpg">
+                    <p class="form-field__hint">Paste a direct link to the photo you want guests to see.</p>
+                </div>
+
+                <div class="form-field--row">
+                    <div class="form-field">
+                        <label for="price">
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2v20m5-16H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            </svg>
+                            Price per night (INR)
+                        </label>
+                        <input type="number" id="price" name="listing[price]" value="<%= listing.price %>" min="0" step="1" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="location">
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>
+                            </svg>
+                            City or location
+                        </label>
+                        <input type="text" id="location" name="listing[location]" value="<%= listing.location %>" maxlength="100" required>
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label for="country">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/>
+                        </svg>
+                        Country
+                    </label>
+                    <input type="text" id="country" name="listing[country]" value="<%= listing.country %>" maxlength="100" required>
+                </div>
+
+                <div class="form-actions">
+                    <button class="button" type="submit">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/><path d="M17 21v-8H7v8M7 3v5h8"/>
+                        </svg>
+                        Save changes
+                    </button>
+                    <a class="button button--secondary" href="/listings/<%= listing._id %>">Cancel</a>
+                </div>
+            </form>
+        </section>
+
+        <aside class="form-tip-card">
+            <span class="form-tip-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 18h6m-5 4h4m-2-20a7 7 0 0 0-4 12.75c.7.5 1 1.05 1 1.75h6c0-.7.3-1.25 1-1.75A7 7 0 0 0 12 2Z"/>
+                </svg>
+            </span>
+            <h2>Keep it up to date</h2>
+            <p>Accurate details help guests know exactly what to expect.</p>
+            <ul>
+                <li>Refresh photos when your space changes.</li>
+                <li>Keep nightly rates accurate.</li>
+                <li>Review spelling and location details.</li>
+            </ul>
+        </aside>
+    </div>
+</section>
